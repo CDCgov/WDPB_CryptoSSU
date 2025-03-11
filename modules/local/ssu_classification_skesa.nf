@@ -26,7 +26,7 @@ process CRYPTO_SSU_CLASSIFICATION_skesa {
     gunzip ./temp/$fasta
     mkdir ./${prefix}
 
-    source /apps/x86_64/miniconda3/20230728/bin/activate /scicomp/groups-pure/OID/NCEZID/DFWED/WDPB/conda/py-blast
+   
 
     18S_toolv06.py \\
         --query=./temp/${prefix}.fasta \\
