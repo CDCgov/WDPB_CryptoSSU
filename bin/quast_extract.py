@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-#dev:Anusha Ginni,qxu0@cdc.gov
+#dev:Anusha Ginni,qxu0@cdc.gov, 
+#edit: Shatavia Morrison
 #1/08/2025
+#3/19/2025
 #Func:scripts extracts the required elements from the quast report, edit as per your needs
 #USAGE: python quast_extract.py <path to report.tsv from quast module> <extractreport.tsv>
 
@@ -44,12 +46,7 @@ def extract_quast_report(infile, outfile):
     extracted_data.index.name = "Sample Name"
     extracted_data.index = extracted_data.index.str.split('.').str[0]
     extracted_data.reset_index(inplace=True)
-    # print(extracted_data.head())
-    # print(extracted_data["N50_Skesa"].apply(type))
-    # print(extracted_data.dtypes)
     extracted_data = extracted_data.astype(str)
-    # print(extracted_data["N50_Skesa"].apply(type))
-    # print(extracted_data.dtypes)
     extracted_data.to_csv(outfile, index=False)
 
 def main(args=None):
