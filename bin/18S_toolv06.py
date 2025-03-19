@@ -8,7 +8,6 @@ import pandas as pd
 import shutil
 import numpy as np
 
-#This script is modified as per cron job requirments - 11/15/2022
 ## Added funtion to copy blast data to results folder when samples are below thresholds - 12/11/2022
 #Tuned the disclaimer function - 1/05/2023
 #Added header to the blast output in the final results - 07/5/2023
@@ -106,10 +105,7 @@ def blast_output(args):
 						send=int(line[10])
 						qlen=int(line[11])
 						slen=int(line[12])
-						# qseq=(line[13])
 						bitscore=(line[13])
-						# sec_qlen=len(qseq)
-					# print(sec_qlen)
 						if qstart < qend:
 							aligned_query_length = max(qend - qstart + 1, 0)  # Length of aligned region on query
 						else:
@@ -205,9 +201,6 @@ def filter_besthit(args):
 			data=pd.read_csv(os.path.join(csvpath, file), sep=",", index_col=False)
 			data = data.drop(["Unnamed: 0","mismatch","gapopen","query_length","subject_length"],axis=1)
 			data["rank"]=data[["query_genome","pident","coverage","bitscore"]].apply(tuple,axis=1).rank(method='dense',ascending=False).astype(int)
-			#print("HERE")
-			#print(data["db_bestmatch"][0])
-			#species=data["db_bestmatch"][0].split('_',2, expand=True)
 			species=data["db_bestmatch"][0].split('_',2)
 			data["species"] = species[0]+"."+species[1]
 			data["sample_name"]=fname
