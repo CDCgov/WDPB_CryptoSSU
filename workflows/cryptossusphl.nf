@@ -50,7 +50,7 @@ include { FASTQ_TRIM_FASTP_FASTQC } from '../subworkflows/local/fastq_trim_fastp
 //
 include { FASTQC                      } from '../modules/nf-core/fastqc/main'
 include { MULTIQC                     } from '../modules/nf-core/multiqc/main'
-include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoftwareversions/main'
+include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoftwareversions/main.nf'
 include { KRAKEN2                     } from '../modules/nf-core/kraken2/kraken2/main'
 include { UNTAR as UNTAR_KRAKEN2_DB   } from '../modules/nf-core/untar/main'
 include { KRAKEN2_BUILD               } from '../modules/local/kraken2_build'
