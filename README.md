@@ -6,6 +6,9 @@ The pipeline is built using Nextflow, a workflow tool to run tasks across multip
 
 ### Pipeline Summary
 
+nextflow run CDCgov/WDPB_CryptoSSU -r main -profile singularity -c <config.file> --outdir <output directory name> --platform illumina --allele_seq assets/allalleles_0.fasta --input <samplesheet.csv> 
+
+
 This pipeline is used by the CryptoNet program to perform whole genome sequence assembly for Cryptosporidium species. Cryptosporidium species are identified with an blast based 18S approach and gp60 subtype. The pipeline components are listed below:
 1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Adapter trimming ([`fastp`](https://github.com/OpenGene/fastp))
