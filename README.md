@@ -7,6 +7,12 @@ The pipeline is built using Nextflow, a workflow tool to run tasks across multip
 ### Pipeline Summary
 
 This pipeline is used by the CryptoNet program to perform whole genome sequence assembly for Cryptosporidium species. Cryptosporidium species are identified with an blast based 18S approach and gp60 subtype. The pipeline components are listed below:
+1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
+2. Adapter trimming ([`fastp`](https://github.com/OpenGene/fastp))
+3. Removal of host and prokaryotic reads ([`Kraken 2`](http://ccb.jhu.edu/software/kraken2/); _optional_)
+4. _De novo_ assembly
+   1. Choice of multiple assembly tools [`Unicycler`](https://github.com/rrwick/Unicycler) _||_ [`Skesa`](https://github.com/ncbi/SKESA))
+5. 
 
 
 
