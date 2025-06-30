@@ -1,6 +1,12 @@
 # CryptoNet Cryptosporidium Whole Genome Sequence Nextflow Pipeline
 
-## This nf-core style pipeline is CryptoNet introductor pipeline to perform read quality assessment, de novo assembly and 18S species characterization and gp60 identification.
+## Note - Please note that the results produced by this pipeline are not ISO or CLIA-certified and should not be considered diagnostic.
+
+The pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.
+
+### Pipeline Summary
+
+This pipeline is used by the CryptoNet program to perform whole genome sequence assembly for Cryptosporidium species. Cryptosporidium species are identified with an blast based 18S approach and gp60 subtype. The pipeline components are listed below:
 
 
 
