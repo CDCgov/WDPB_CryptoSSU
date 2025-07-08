@@ -5,9 +5,13 @@
 The pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.
 
 Org: Division of Foodborne Waterborne and Environmental Diseases, WDPB
+
 Version: 1.0.0 
+
 Status: Maintained 
+
 Keywords: pathogen surveillance, next generation sequencing analysis, bioinformatics, genomics, metagenomics, parasitic disease, Cryptosporidiosis 
+
 Contact Email: ncezid_shareit@cdc.gov
 
 
