@@ -36,10 +36,10 @@ The pipeline identifies *Cryptosporidium* species using a BLAST-based 18S approa
    - [`Unicycler`](https://github.com/rrwick/Unicycler)  
    - [`SKESA`](https://github.com/ncbi/SKESA)
 
-5. **_Species Detection**
+5. **Species Detection**
    Tool: Blast based approach using 18S sequence
 
-6. **_GP60 Subtype Characterization**
+6. **GP60 Subtype Characterization**
    Tool: Blast based approach using GP60 subtype sequences
 
 ---
