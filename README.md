@@ -1,32 +1,55 @@
-# CryptoNet Cryptosporidium Whole Genome Sequence Nextflow Pipeline
+# CryptoNet: Cryptosporidium Whole Genome Sequence Nextflow Pipeline
 
-## Note - Please note that the results produced by this pipeline are not ISO or CLIA-certified and should not be considered diagnostic.
+**Version:** 1.0.0  
+**Maintained by:** Division of Foodborne, Waterborne, and Environmental Diseases (DFWED), WDPB  
+**Contact:** [ncezid_shareit@cdc.gov](mailto:ncezid_shareit@cdc.gov)  
+**Status:** Maintained  
+**Keywords:** pathogen surveillance, next generation sequencing, bioinformatics, genomics, metagenomics, parasitic disease, Cryptosporidiosis
 
-The pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.
+---
 
-Org: Division of Foodborne Waterborne and Environmental Diseases, WDPB
+> ⚠️ **Note:** The results produced by this pipeline are not ISO or CLIA-certified and should not be considered diagnostic.
 
-Version: 1.0.0 
+---
 
-Status: Maintained 
+## Overview
 
-Keywords: pathogen surveillance, next generation sequencing analysis, bioinformatics, genomics, metagenomics, parasitic disease, Cryptosporidiosis 
+CryptoNet is a **Nextflow DSL2 pipeline** designed for the **whole genome sequence (WGS) assembly** of *Cryptosporidium* species. Built for the CDC’s CryptoNet program, the pipeline leverages containerization (Docker/Singularity) to ensure easy deployment, reproducibility, and modular maintenance.
 
-Contact Email: ncezid_shareit@cdc.gov
+---
 
+## Pipeline Features
 
-### Pipeline Summary
+The pipeline identifies *Cryptosporidium* species using a BLAST-based 18S approach and gp60 subtyping. Key processing steps include:
 
-nextflow run CDCgov/WDPB_CryptoSSU -r main -profile singularity -c <config.file> --outdir <output directory name> --platform illumina --allele_seq assets/allalleles_0.fasta --input <samplesheet.csv> 
+1. **Read Quality Control**  
+   Tool: [`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
+2. **Adapter Trimming**  
+   Tool: [`fastp`](https://github.com/OpenGene/fastp)
 
-This pipeline is used by the CryptoNet program to perform whole genome sequence assembly for Cryptosporidium species. Cryptosporidium species are identified with an blast based 18S approach and gp60 subtype. The pipeline components are listed below:
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Adapter trimming ([`fastp`](https://github.com/OpenGene/fastp))
-3. Removal of host and prokaryotic reads ([`Kraken 2`](http://ccb.jhu.edu/software/kraken2/); _optional_)
-4. _De novo_ assembly
-   1. Choice of multiple assembly tools [`Unicycler`](https://github.com/rrwick/Unicycler) _||_ [`Skesa`](https://github.com/ncbi/SKESA))
-5. 
+3. **Host/Prokaryotic Read Removal** (_optional_)  
+   Tool: [`Kraken 2`](http://ccb.jhu.edu/software/kraken2/)
+
+4. **_De novo_ Assembly**  
+   Tools:  
+   - [`Unicycler`](https://github.com/rrwick/Unicycler)  
+   - [`SKESA`](https://github.com/ncbi/SKESA) _(choice of one)_
+
+---
+
+## Usage
+
+To run the pipeline:
+
+```bash
+nextflow run CDCgov/WDPB_CryptoSSU -r main \
+  -profile singularity \
+  -c <config.file> \
+  --outdir <output directory name> \
+  --platform illumina \
+  --allele_seq assets/allalleles_0.fasta \
+  --input <samplesheet.csv>
 
 
 
