@@ -51,7 +51,7 @@ nextflow run CDCgov/WDPB_CryptoSSU -r main \
   --allele_seq assets/allalleles_0.fasta \
   --input <samplesheet.csv>
 
-
+```
 
 # CDCgov GitHub Organization Open Source Project Template
 
