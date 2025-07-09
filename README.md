@@ -44,6 +44,10 @@ The pipeline identifies *Cryptosporidium* species using a BLAST-based 18S approa
    
    Tool: Blast based approach using GP60 subtype sequences
 
+8. **MultiQC Report**
+
+   Tool: HTML or text document that summarizes the pipeline results into a report document
+
 ---
 
 ## Usage
