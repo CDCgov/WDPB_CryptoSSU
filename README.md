@@ -1,25 +1,71 @@
-# CDCgov GitHub Organization Open Source Project Template
+# CryptoNet: Cryptosporidium Whole Genome Sequence Nextflow Pipeline - CryptoSSU
 
-**Template for clearance: This project serves as a template to aid projects in starting up and moving through clearance procedures. To start, create a new repository and implement the required [open practices](open_practices.md), train on and agree to adhere to the organization's [rules of behavior](rules_of_behavior.md), and [send a request through the create repo form](https://forms.office.com/Pages/ResponsePage.aspx?id=aQjnnNtg_USr6NJ2cHf8j44WSiOI6uNOvdWse4I-C2NUNk43NzMwODJTRzA4NFpCUk1RRU83RTFNVi4u) using language from this template as a Guide.**
+**Version:** 1.0.0  
+**Maintained by:** Division of Foodborne, Waterborne, and Environmental Diseases (DFWED), WDPB  
+**Contact:** [ncezid_shareit@cdc.gov](mailto:ncezid_shareit@cdc.gov)  
+**Status:** Maintained  
+**Keywords:** pathogen surveillance, next generation sequencing, bioinformatics, genomics, metagenomics, parasitic disease, Cryptosporidiosis
 
-**General disclaimer** This repository was created for use by CDC programs to collaborate on public health related projects in support of the [CDC mission](https://www.cdc.gov/about/organization/mission.htm).  GitHub is not hosted by the CDC, but is a third party website used by CDC and its partners to share information and collaborate on software. CDC use of GitHub does not imply an endorsement of any one particular service, product, or enterprise. 
+---
 
-## Access Request, Repo Creation Request
+> ⚠️ **Note:** The results produced by this pipeline are not ISO or CLIA-certified and should not be considered diagnostic.
 
-* [CDC GitHub Open Project Request Form](https://forms.office.com/Pages/ResponsePage.aspx?id=aQjnnNtg_USr6NJ2cHf8j44WSiOI6uNOvdWse4I-C2NUNk43NzMwODJTRzA4NFpCUk1RRU83RTFNVi4u) _[Requires a CDC Office365 login, if you do not have a CDC Office365 please ask a friend who does to submit the request on your behalf. If you're looking for access to the CDCEnt private organization, please use the [GitHub Enterprise Cloud Access Request form](https://forms.office.com/Pages/ResponsePage.aspx?id=aQjnnNtg_USr6NJ2cHf8j44WSiOI6uNOvdWse4I-C2NUQjVJVDlKS1c0SlhQSUxLNVBaOEZCNUczVS4u).]_
-
-## Related documents
-
-* [Open Practices](open_practices.md)
-* [Rules of Behavior](rules_of_behavior.md)
-* [Thanks and Acknowledgements](thanks.md)
-* [Disclaimer](DISCLAIMER.md)
-* [Contribution Notice](CONTRIBUTING.md)
-* [Code of Conduct](code-of-conduct.md)
+---
 
 ## Overview
 
-Describe the purpose of your project. Add additional sections as necessary to help collaborators and potential collaborators understand and use your project.
+CryptoSSU is a **Nextflow DSL2 pipeline** designed for molecular detection and species/subtype identification of *Cryptosporidium* from whole genome (isolate) or metagenomic sequencing. Built for the CDC’s CryptoNet program, the pipeline leverages containerization (Docker/Singularity) to ensure easy deployment, reproducibility, and modular maintenance across Unix-based computing environments.
+
+---
+
+## Pipeline Features
+
+The pipeline identifies *Cryptosporidium* species using a BLAST-based 18S approach and gp60 subtyping. Key processing steps include:
+
+1. **Read Quality Control**  
+   Tool: [`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+
+2. **Adapter Trimming**  
+   Tool: [`fastp`](https://github.com/OpenGene/fastp)
+
+3. **Host/Prokaryotic Read Removal** (_optional_)  
+   Tool: [`Kraken 2`](http://ccb.jhu.edu/software/kraken2/)
+
+4. **_De novo_ Assembly**  
+   Tools _(choice of one)_:  
+   - [`Unicycler`](https://github.com/rrwick/Unicycler)  
+   - [`SKESA`](https://github.com/ncbi/SKESA)
+
+5. **Species Detection**
+   
+   Tool: Blast based approach using 18S sequence
+
+7. **GP60 Subtype Characterization**
+   
+   Tool: Blast based approach using GP60 subtype sequences
+
+8. **MultiQC Report**
+
+   Tool: HTML or text document that summarizes the pipeline results into a report document
+
+---
+
+## Usage
+
+To run the pipeline:
+
+```bash
+nextflow run CDCgov/WDPB_CryptoSSU -r main \
+  -profile singularity \
+  -c <config.file> \
+  --outdir <output directory name> \
+  --platform illumina \
+  --allele_seq assets/allalleles_0.fasta \
+  --input <samplesheet.csv>
+
+```
+
+**General disclaimer** This repository was created for use by CDC programs to collaborate on public health related projects in support of the [CDC mission](https://www.cdc.gov/about/organization/mission.htm).  GitHub is not hosted by the CDC, but is a third party website used by CDC and its partners to share information and collaborate on software. CDC use of GitHub does not imply an endorsement of any one particular service, product, or enterprise. 
   
 ## Public Domain Standard Notice
 This repository constitutes a work of the United States Government and is not
