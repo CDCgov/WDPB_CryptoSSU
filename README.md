@@ -1,9 +1,10 @@
 # CryptoNet: Cryptosporidium Whole Genome Sequence Nextflow Pipeline - CryptoSSU
 
-**Version:** 1.0.0  
-**Maintained by:** Division of Foodborne, Waterborne, and Environmental Diseases (DFWED), WDPB  
-**Contact:** [ncezid_shareit@cdc.gov](mailto:ncezid_shareit@cdc.gov)  
-**Status:** Maintained  
+**Version:** 1.0.0
+**Organization:** NCEZID - Division of Foodborne, Waterborne, and Environmental Diseases (DFWED) 
+**Contact Email:** [ncezid_shareit@cdc.gov](mailto:ncezid_shareit@cdc.gov)  
+**Description:** CryptoSSU is a **Nextflow DSL2 pipeline** designed for molecular detection and species/subtype identification of *Cryptosporidium* from whole genome (isolate) or metagenomic sequencing. Built for the CDC’s CryptoNet program, the pipeline leverages containerization (Docker/Singularity) to ensure easy deployment, reproducibility, and modular maintenance across Unix-based computing environments.
+**Exemption:** Non-exempt
 **Keywords:** pathogen surveillance, next generation sequencing, bioinformatics, genomics, metagenomics, parasitic disease, Cryptosporidiosis
 
 ---
