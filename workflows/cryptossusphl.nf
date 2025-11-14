@@ -54,13 +54,8 @@ include { CUSTOM_DUMPSOFTWAREVERSIONS } from '../modules/nf-core/custom/dumpsoft
 include { KRAKEN2                     } from '../modules/nf-core/kraken2/kraken2/main'
 include { UNTAR as UNTAR_KRAKEN2_DB   } from '../modules/nf-core/untar/main'
 include { KRAKEN2_BUILD               } from '../modules/local/kraken2_build'
-include { KMA_ALLELES                 } from '../modules/local/kma_alleles'
-include { KMACGMLST_INDEX             } from '../modules/local/kmacgmlst_index_main'
-include { KMACGMLST_CALL              } from '../subworkflows/local/kmacgmlst_main'
 include { UNICYCLER                   } from '../modules/nf-core/unicycler/main'
 include { SKESA                       } from '../modules/local/skesa'
-include { PREPARE_ALLELEDB            } from '../subworkflows/local/prepare_alleledb'
-include { ETOKI_MLST                  } from '../modules/local/etoki_mlst'
 include { BLAST_MAKEBLASTDB as MAKE_18S   } from '../modules/nf-core/blast/makeblastdb/main'
 include { BLAST_MAKEBLASTDB as MAKE_GP60  } from '../modules/nf-core/blast/makeblastdb/main'
 include { BLAST_BLASTN as RUN_18S            } from '../modules/nf-core/blast/blastn/main'
@@ -153,12 +148,6 @@ if (params.kraken2_db) {
     ch_kraken2_multiqc = KRAKEN2.out.report
      ch_versions        = ch_versions.mix(KRAKEN2.out.versions.first().ifEmpty(null))
      //ch_kraken_quast = Channel.empty()
-    // Module: KMA
-
-    KMA_ALLELES("${params.allele_seq}")
-    KMACGMLST_INDEX(KMA_ALLELES.out.fasta)
-    ch_schema_kma = KMACGMLST_INDEX.out.index
-    KMACGMLST_CALL(ch_trimmed_fastq,ch_schema_kma)
 
 
     // Module: Unicycler or Skesa
@@ -185,13 +174,6 @@ if (params.kraken2_db) {
    ch_quast_report=EXTRACT_QUAST.out.extracted_quast
    ch_quast_report.view()
 
-
-   // Module: Etoki
-   PREPARE_ALLELEDB(params.allele_seq)
-   ch_reference_alleles = PREPARE_ALLELEDB.out.reference_alleles
-   ch_etoki_md5sum      = PREPARE_ALLELEDB.out.etoki_md5sum 
-   
-   ETOKI_MLST(ch_contigs, ch_reference_alleles,ch_etoki_md5sum )
 
    // Modules: Blast 18S and GP60
    // make blast db
