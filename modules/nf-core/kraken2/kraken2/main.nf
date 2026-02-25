@@ -36,7 +36,7 @@ process KRAKEN2 {
 
     """
     kraken2 \\
-        --db /scicomp/groups-pure/OID/NCEZID/DFWED/WDPB/watervapor/projects/nf-core-minivaporone/bin/kraken_db \\
+        --db /bin/kraken_db \\
         --threads $task.cpus \\
         --report ${prefix}.kraken2.report.txt \\
         --gzip-compressed \\
