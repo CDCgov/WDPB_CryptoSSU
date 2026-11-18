@@ -1,7 +1,3 @@
-# CryptoNet: Cryptosporidium Whole Genome Sequence Nextflow Pipeline - CryptoSSU
-
-**Version:** 1.0.0
-
 **Organization:** NCEZID - Division of Foodborne, Waterborne, and Environmental Diseases (DFWED) 
 
 **Contact Email:** [ncezid_shareit@cdc.gov](mailto:ncezid_shareit@cdc.gov)  
@@ -124,4 +120,4 @@ collaboration and collaborative potential. All government records will be
 published through the [CDC web site](http://www.cdc.gov).
 
 ## Additional Standard Notices
-Please refer to [CDC's Template Repository](https://github.com/CDCgov/template) for more information about [contributing to this repository](https://github.com/CDCgov/template/blob/main/CONTRIBUTING.md), [public domain notices and disclaimers](https://github.com/CDCgov/template/blob/main/DISCLAIMER.md), and [code of conduct](https://github.com/CDCgov/template/blob/main/code-of-conduct.md).
+Please refer to [CDC's Template Repository](https://github.com/CDCgov/template) for more information ab
